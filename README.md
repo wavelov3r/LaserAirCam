@@ -123,7 +123,7 @@ Create a new config file:
 sudo nano /etc/ser2net.yaml
 ```
 
-Example configuration:
+Configuration (check the serial connector, leave untouched the 2000 port as it is used by the python script, or change its config later):
 
 ```yaml
 %YAML 1.1
@@ -221,7 +221,7 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/home/pi/laseraircam/repo
+WorkingDirectory=/home/pi/laseraircam
 ExecStart=/usr/bin/python3 laseraircam.py
 Restart=on-failure
 User=dietpi
@@ -233,12 +233,12 @@ WantedBy=multi-user.target
 configure the LaserAirCam App:
 
 ```sh
-sudo nano /home/pi/laseraircam/repo/config.py
+sudo nano /home/pi/laseraircam/config.py
 ```
 check for errors in the log: 
 
 ```sh
-sudo python3 /home/pi/laseraircam/repo/laseraircam.py
+sudo python3 /home/pi/laseraircam/laseraircam.py
 ```
 
 if works,
