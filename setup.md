@@ -1,5 +1,3 @@
-# LaserAirCam - Raspberry Pi Camera & Serial Gateway with AirAssist for Laser Engravers
-
 ## Hardware Requirements
 
 - **Raspberry Pi Zero 2W** (or higher, if using other printed cases) + at least 8GB SD card
