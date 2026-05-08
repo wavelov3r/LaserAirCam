@@ -192,14 +192,15 @@ pip install rpi_ws281x adafruit-circuitpython-neopixel RPi.GPIO
 ---
 
 
-## 0. Quick Setup (Recommended)
+## 6. LaserAirCam Setup
 
 1. Create a project directory and clone the repository:
 
 ```sh
+sudo apt install git
 mkdir laseraircam && cd laseraircam
-git clone https://github.com/utente/repo.git
-cd repo  # Enter the cloned repository folder
+git clone https://github.com/wavelov3r/LaserAirCam.git
+cd LaserAirCam
 ```
 
 2. (After installing dependencies) Create and enable a systemd service to run `laseraircam.py` from the current path (check the path and the user):
@@ -219,7 +220,7 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/home/pi/laseraircam
+WorkingDirectory=/home/dietpi/laseraircam
 ExecStart=/usr/bin/python3 laseraircam.py
 Restart=on-failure
 User=dietpi
@@ -231,12 +232,12 @@ WantedBy=multi-user.target
 configure the LaserAirCam App:
 
 ```sh
-sudo nano /home/pi/laseraircam/config.py
+sudo nano /home/dietpi/laseraircam/config.py
 ```
 check for errors in the log: 
 
 ```sh
-sudo python3 /home/pi/laseraircam/laseraircam.py
+sudo python3 /home/dietpi/laseraircam/laseraircam.py
 ```
 
 if works,
