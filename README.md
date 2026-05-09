@@ -32,31 +32,30 @@
 
 ## 🖼️ Preview
 
-Here is a preview of the images in the `images` folder:
 
 <table>
 	<tr>
 		<td align="center">
-			<img src="images/capture.png" width="150" alt="Capture Preview"><br>
+			<img src="images/capture.png" width="200" alt="Capture Preview"><br>
 			<b>Capture</b><br>
-			Camera capture screenshot.
+			Camera capture snapshot and streamHD.
 		</td>
 		<td align="center">
-			<img src="images/customgcode.png" width="150" alt="Custom GCode Preview"><br>
+			<img src="images/customgcode.png" width="200" alt="Custom GCode Preview"><br>
 			<b>Custom GCode</b><br>
-			Interface for sending custom GCode commands.
+			Interface for sending custom GCode commands or manual move.
 		</td>
 	</tr>
 	<tr>
 		<td align="center">
-			<img src="images/lasermonitor.png" width="150" alt="Laser Monitor Preview"><br>
+			<img src="images/lasermonitor.png" width="200" alt="Laser Monitor Preview"><br>
 			<b>Laser Monitor</b><br>
-			Laser status and parameter monitoring.
+			Parameters settings and leds notification.
 		</td>
 		<td align="center">
-			<img src="images/stream.png" width="150" alt="Stream Preview"><br>
+			<img src="images/stream.png" width="200" alt="Stream Preview"><br>
 			<b>Stream</b><br>
-			Real-time video streaming from the camera.
+			Stream settings.
 		</td>
 	</tr>
 </table>
