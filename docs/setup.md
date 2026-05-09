@@ -10,7 +10,7 @@
 
 ---
 
-***Note: If disk space is low, please attempt step 5 first; it will temporarily take up approximately 350 MB***
+***Note: If disk space is low, please attempt step 5 first; it will temporarily take up approximately 350 MB | the path and user refers to "dietpi"***
 
 ## 2. Raspberry Pi Camera Configuration
 
@@ -215,12 +215,12 @@ cd laseraircam
 configure the LaserAirCam App:
 
 ```sh
-sudo nano /home/dietpi/laseraircam/config.py
+sudo nano config.py
 ```
 check for errors in the log: 
 
 ```sh
-sudo python3 /home/dietpi/laseraircam/laseraircam.py
+sudo python3 laseraircam.py
 ```
 
 2. if works (After installing dependencies) Create and enable a systemd service to run `laseraircam.py` from the current path (check the path and the user):
@@ -231,7 +231,7 @@ Create the service file (as root):
 sudo nano /etc/systemd/system/laseraircam.service
 ```
 
-Paste the following (edit paths and user if needed):
+Paste the following (**edit path and user if needed**):
 
 ```
 [Unit]
