@@ -1,4 +1,17 @@
+## Hardware Requirements
 
+- **Raspberry Pi Zero 2W** (or higher, if using other printed cases) + at least 8GB SD card
+- **Raspberry Pi Camera v1.2 5MPx 75° FOV** (with IR filter, 20cm flat cable recommended)
+  *Note: Other cameras may overload the system and require different libraries (e.g., libcamera)*
+- **WS2812 Addressable LED Strip** (e.g., 11.5mm wide)
+- **2 or 3 lever micro switches** (for buttons)
+- **LR784 MOSFET module** (only if you want to add air assist)
+- **24V DC air assist pump** (e.g., Lasertree)
+- **Tools to cut the engraver top** (grinder, dremel, etc.)
+- **3D printer** (or printed parts)
+- **Wires, soldering iron, and patience!**
+
+---
 
 ## 1. Operating System Setup (DietPi)
 
@@ -16,7 +29,12 @@
 
 ### 2.1 Enable the Camera
 
-Edit the configuration file:
+Run `sudo dietpi-config`, go to **Display Options**, and enable:
+
+- `8 : RPi Camera` → **[On]**
+- `18 : RPi Codecs` → **[On]** *(V4L2 hardware video codecs)*
+
+Then edit the configuration file:
 
 ```sh
 sudo nano /boot/firmware/config.txt
@@ -25,6 +43,7 @@ sudo nano /boot/firmware/config.txt
 Add or update the following lines:
 
 ```ini
+#-------RPi camera module-------
 camera_auto_detect=0
 dtoverlay=vc4-fkms-v3d
 start_x=1
@@ -33,6 +52,7 @@ gpu_mem_512=128
 gpu_mem_256=128
 gpu_mem=128
 disable_camera_led=0
+#----------------------
 ```
 
 Save and exit (`CTRL+X`, `Y`, `Enter`).
@@ -52,7 +72,6 @@ Reboot the Raspberry Pi.
 ```sh
 sudo ls /dev/video*
 sudo v4l2-ctl --list-devices
-sudo vcgencmd get_camera
 ```
 Ensure the camera is detected correctly.
 
@@ -66,6 +85,12 @@ Install uStreamer:
 
 ```sh
 sudo apt install ustreamer -y
+```
+
+Start uStreamer with MJPEG stream:
+
+```sh
+sudo ustreamer --device=/dev/video0 --host=0.0.0.0 --port=8080 --format=MJPEG --resolution=1280x960 --desired-fps=20
 ```
 
 Test the stream at:
@@ -128,6 +153,12 @@ connection: &usb0
 
 Save and exit.
 
+Restart the ser2net service to apply the new configuration:
+
+```sh
+sudo systemctl restart ser2net
+```
+
 ### 4.4 Connect from Remote PC
 
 Download and install on your PC:
@@ -149,36 +180,19 @@ sudo apt install python3 python3-pip -y
 
 ### 5.2 Required Python Modules
 
-Install one at a time to avoid overloading the Raspberry Pi (especially with 4GB SD cards):
-
-```sh
-sudo apt install python3-paho-mqtt -y
-sudo apt install python3-opencv -y
-sudo apt install python3-pil -y
-```
-
-### 5.3 Additional Required Python Modules
-
-The following modules are also required for LED and GPIO control; unfortunately some modules needs to be compiled, so we need:
-
-```sh
-sudo apt install gcc g++ make build-essential python3-dev
-```
-ant then:
+The following modules are also required for LED. MQTT and GPIO control:
 
 ```sh
 sudo apt install python3-rpi.gpio -y
-sudo pip3 install rpi_ws281x adafruit-circuitpython-neopixel --break-system-packages
+pip3 install rpi_ws281x adafruit-circuitpython-neopixel python3-paho-mqtt
+
 ```
+If you use a virtual environment, install them with pip inside the venv:
 
-- `python3-rpi.gpio` provides the RPi.GPIO library for GPIO pin control.
-- `rpi_ws281x` and `adafruit-circuitpython-neopixel` are required for WS2812 (NeoPixel) LED control.
-
-you can now free disk space
 ```sh
-sudo apt purge gcc g++ make build-essential python3-dev
-sudo apt autopurge
+pip install rpi_ws281x adafruit-circuitpython-neopixel RPi.GPIO
 ```
+
 ---
 
 
