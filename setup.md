@@ -177,6 +177,7 @@ The following modules are also required for LED and GPIO control:
 ```sh
 sudo apt install python3-rpi.gpio -y
 sudo pip3 install rpi_ws281x adafruit-circuitpython-neopixel --break-system-packages
+
 ```
 
 - `python3-rpi.gpio` provides the RPi.GPIO library for GPIO pin control.
