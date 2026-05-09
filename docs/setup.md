@@ -175,7 +175,7 @@ sudo apt install python3-rpi.gpio python3-paho-mqtt -y
 
 #### ⚙️ Build dependencies for rpi_ws281x
 
-To install `rpi_ws281x`, you need a C compiler and Python development headers, as this library contains native code that must be compiled on your system. Install them with:
+Unfortunately to install `rpi_ws281x`, you need a C compiler and Python development headers, as this library contains native code that must be compiled on your system. Install them with:
 
 ```sh
 sudo apt install build-essential python3-dev -y
