@@ -25,7 +25,11 @@
 2. Configure your Virtual COM port on PC and point LightBurn to the device IP.
 3. Enjoy a wireless, automated, and visually interactive laser engraving experience.
 
+**🖥️ Hardware Requirements:** [See hwreq.md](./hwreq.md)
+
 [**📚 Full Setup Guide**](./setup.md) | [**🐞 Report Issue**](../../issues) | [**💡 Suggest Feature**](../../discussions)
+
+
 
 ---
 
