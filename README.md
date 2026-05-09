@@ -85,7 +85,6 @@
 		<td align="center">
 			<img src="images/homeassistant_lovelace.png" width="150" alt="Full Size Screen Preview"><br>
 			<b>Homeassistant Controls</b><br>
-
 		</td>
 	</tr>
 </table>
