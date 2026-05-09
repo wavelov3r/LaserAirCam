@@ -176,17 +176,11 @@ The following modules are also required for LED and GPIO control:
 
 ```sh
 sudo apt install python3-rpi.gpio -y
-sudo pip3 install rpi_ws281x adafruit-circuitpython-neopixel
+sudo pip3 install rpi_ws281x adafruit-circuitpython-neopixel --break-system-packages
 ```
 
 - `python3-rpi.gpio` provides the RPi.GPIO library for GPIO pin control.
 - `rpi_ws281x` and `adafruit-circuitpython-neopixel` are required for WS2812 (NeoPixel) LED control.
-
-If you use a virtual environment, install them with pip inside the venv:
-
-```sh
-pip install rpi_ws281x adafruit-circuitpython-neopixel RPi.GPIO
-```
 
 ---
 
