@@ -207,12 +207,23 @@ sudo apt autoremove --purge -y
 
 ```sh
 sudo apt install git
-mkdir laseraircam && cd laseraircam
-git clone https://github.com/wavelov3r/LaserAirCam.git
-cd LaserAirCam
+
+git clone https://github.com/wavelov3r/LaserAirCam.git laseraircam && cd laseraircam
+cd laseraircam
 ```
 
-2. (After installing dependencies) Create and enable a systemd service to run `laseraircam.py` from the current path (check the path and the user):
+configure the LaserAirCam App:
+
+```sh
+sudo nano /home/dietpi/laseraircam/config.py
+```
+check for errors in the log: 
+
+```sh
+sudo python3 /home/dietpi/laseraircam/laseraircam.py
+```
+
+2. if works (After installing dependencies) Create and enable a systemd service to run `laseraircam.py` from the current path (check the path and the user):
 
 Create the service file (as root):
 
@@ -237,20 +248,6 @@ User=dietpi
 [Install]
 WantedBy=multi-user.target
 ```
-
-configure the LaserAirCam App:
-
-```sh
-sudo nano /home/dietpi/laseraircam/config.py
-```
-check for errors in the log: 
-
-```sh
-sudo python3 /home/dietpi/laseraircam/laseraircam.py
-```
-
-if works,
-Enable and start the service:
 
 ```sh
 sudo systemctl daemon-reload
