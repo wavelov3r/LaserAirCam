@@ -164,16 +164,37 @@ Configure the COM port, enter the Raspberry Pi IP and port (default 2000, with P
 sudo apt install python3 python3-pip -y
 ```
 
+
 ### 5.2 Required Python Modules
 
-The following modules are also required for LED. MQTT and GPIO control:
+The following modules are also required for LED, MQTT, and GPIO control:
 
 ```sh
 sudo apt install python3-rpi.gpio python3-paho-mqtt -y
-pip3 install rpi_ws281x adafruit-circuitpython-neopixel --break-system-packages
-
 ```
-If you use a virtual environment, install them with pip inside the venv (to avoid --break-system-packages):
+
+#### ⚙️ Build dependencies for rpi_ws281x
+
+To install `rpi_ws281x`, you need a C compiler and Python development headers, as this library contains native code that must be compiled on your system. Install them with:
+
+```sh
+sudo apt install build-essential python3-dev -y
+```
+
+Now you can install the required Python packages:
+
+```sh
+pip3 install rpi_ws281x adafruit-circuitpython-neopixel --break-system-packages
+```
+
+If you use a virtual environment, install them with pip inside the venv (to avoid --break-system-packages).
+
+**Optional:** After successful installation, you can remove the build tools to save space:
+
+```sh
+sudo apt remove --purge build-essential python3-dev -y
+sudo apt autoremove --purge -y
+```
 
 ---
 
