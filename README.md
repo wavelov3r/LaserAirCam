@@ -81,9 +81,12 @@
 		<td align="center">
 			<img src="images/fullsizescreen.png" width="150" alt="Full Size Screen Preview"><br>
 			<b>Full Size Screen</b><br>
-			Full UI.
 		</td>
-		<td></td>
+		<td align="center">
+			<img src="images/homeassistant_lovelace.png" width="150" alt="Full Size Screen Preview"><br>
+			<b>Homeassistant Controls</b><br>
+
+		</td>
 	</tr>
 </table>
 
