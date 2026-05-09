@@ -173,7 +173,7 @@ sudo apt install python3-rpi.gpio python3-paho-mqtt -y
 pip3 install rpi_ws281x adafruit-circuitpython-neopixel --break-system-packgages
 
 ```
-If you use a virtual environment, install them with pip inside the venv:
+If you use a virtual environment, install them with pip inside the venv (to avoid break system packgages):
 
 ```sh
 pip3 install rpi_ws281x adafruit-circuitpython-neopixel
