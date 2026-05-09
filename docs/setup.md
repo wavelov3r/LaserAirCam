@@ -10,6 +10,8 @@
 
 ---
 
+*Note: If you have low disk space, execute step 5 as first, as it will temporarily occupy about 230 MB*
+
 ## 2. Raspberry Pi Camera Configuration
 
 ### 2.1 Enable the Camera
