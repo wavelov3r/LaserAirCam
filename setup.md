@@ -65,6 +65,7 @@ Reboot the Raspberry Pi.
 ```sh
 sudo ls /dev/video*
 sudo v4l2-ctl --list-devices
+sudo vcgencmd get_camera
 ```
 Ensure the camera is detected correctly.
 
