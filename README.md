@@ -40,27 +40,50 @@
 <table>
 	<tr>
 		<td align="center">
-			<img src="images/capture.png" width="200" alt="Capture Preview"><br>
+			<img src="images/capture.png" width="150" alt="Capture Preview"><br>
 			<b>Capture</b><br>
-			Camera capture snapshot and streamHD.
+			Camera capture snapshot and StreamHD.
 		</td>
 		<td align="center">
-			<img src="images/customgcode.png" width="200" alt="Custom GCode Preview"><br>
+			<img src="images/customgcode.png" width="150" alt="Custom GCode Preview"><br>
 			<b>Custom GCode</b><br>
-			Interface for sending custom GCode commands or manual move.
+			Send custom GCode commands or manual moves.
+		</td>
+		<td align="center">
+			<img src="images/fullsizescreen.png" width="150" alt="Full Size Screen Preview"><br>
+			<b>Full Size Screen</b><br>
+			Fullscreen camera or dashboard view.
 		</td>
 	</tr>
 	<tr>
 		<td align="center">
-			<img src="images/lasermonitor.png" width="200" alt="Laser Monitor Preview"><br>
+			<img src="images/lasermonitor.png" width="150" alt="Laser Monitor Preview"><br>
 			<b>Laser Monitor</b><br>
-			Parameters settings and leds notification.
+			Laser parameters and LED notifications.
 		</td>
 		<td align="center">
-			<img src="images/stream.png" width="200" alt="Stream Preview"><br>
-			<b>Stream</b><br>
-			Stream settings.
+			<img src="images/ledmgmnt.png" width="150" alt="LED Management Preview"><br>
+			<b>LED Management</b><br>
+			LED color and effect controls.
 		</td>
+		<td align="center">
+			<img src="images/main.png" width="150" alt="Main Dashboard Preview"><br>
+			<b>Main Dashboard</b><br>
+			Main control and status overview.
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+			<img src="images/stream.png" width="150" alt="Stream Preview"><br>
+			<b>Stream</b><br>
+			Stream settings and live video.
+		</td>
+		<td align="center">
+			<img src="images/v4l2camera.png" width="150" alt="V4L2 Camera Preview"><br>
+			<b>V4L2 Camera</b><br>
+			Camera device and V4L2 controls.
+		</td>
+		<td></td>
 	</tr>
 </table>
 
