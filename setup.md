@@ -38,16 +38,14 @@ sudo nano /boot/firmware/config.txt
 Add or update the following lines:
 
 ```ini
-#-------RPi camera module-------
-camera_auto_detect=1
-dtoverlay=vc4-kms-v3d
+camera_auto_detect=0
+dtoverlay=vc4-fkms-v3d
 start_x=1
 gpu_mem_1024=128
 gpu_mem_512=128
 gpu_mem_256=128
 gpu_mem=128
 disable_camera_led=0
-#----------------------
 ```
 
 Save and exit (`CTRL+X`, `Y`, `Enter`).
