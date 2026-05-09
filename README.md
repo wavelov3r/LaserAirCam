@@ -26,3 +26,39 @@
 3. Enjoy a wireless, automated, and visually interactive laser engraving experience.
 
 [**📚 Full Setup Guide**](./setup.md) | [**🐞 Report Issue**](../../issues) | [**💡 Suggest Feature**](../../discussions)
+
+---
+
+
+## 🖼️ Preview
+
+Here is a preview of the images in the `images` folder:
+
+<table>
+	<tr>
+		<td align="center">
+			<img src="images/capture.png" width="150" alt="Capture Preview"><br>
+			<b>Capture</b><br>
+			Camera capture screenshot.
+		</td>
+		<td align="center">
+			<img src="images/customgcode.png" width="150" alt="Custom GCode Preview"><br>
+			<b>Custom GCode</b><br>
+			Interface for sending custom GCode commands.
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+			<img src="images/lasermonitor.png" width="150" alt="Laser Monitor Preview"><br>
+			<b>Laser Monitor</b><br>
+			Laser status and parameter monitoring.
+		</td>
+		<td align="center">
+			<img src="images/stream.png" width="150" alt="Stream Preview"><br>
+			<b>Stream</b><br>
+			Real-time video streaming from the camera.
+		</td>
+	</tr>
+</table>
+
+
