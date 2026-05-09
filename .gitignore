@@ -1,0 +1,20 @@
+# Ignore all
+*
+
+# Don't ignore dirs (but files inside yes)
+!*/
+
+# Keep
+!settings.py
+!laseraircam.py
+!laseraircam_mqtt.py
+
+# avoid system files and cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.DS_Store
+.env
+.venv/
+venv/
