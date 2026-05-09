@@ -186,7 +186,7 @@ sudo apt install build-essential python3-dev -y
 Now you can install the required Python packages:
 
 ```sh
-pip3 install rpi_ws281x adafruit-circuitpython-neopixel --break-system-packages
+sudo pip3 install rpi_ws281x adafruit-circuitpython-neopixel adafruit-blinka --break-system-packages
 ```
 
 If you use a virtual environment, install them with pip inside the venv (to avoid --break-system-packages).
