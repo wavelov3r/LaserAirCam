@@ -50,9 +50,9 @@
 			Send custom GCode commands or manual moves.
 		</td>
 		<td align="center">
-			<img src="images/fullsizescreen.png" width="150" alt="Full Size Screen Preview"><br>
-			<b>Full Size Screen</b><br>
-			Fullscreen camera or dashboard view.
+			<img src="images/v4l2camera.png" width="150" alt="V4L2 Camera Preview"><br>
+			<b>V4L2 Camera</b><br>
+			Camera device and V4L2 controls settings.
 		</td>
 	</tr>
 	<tr>
@@ -79,9 +79,9 @@
 			Stream settings and live video.
 		</td>
 		<td align="center">
-			<img src="images/v4l2camera.png" width="150" alt="V4L2 Camera Preview"><br>
-			<b>V4L2 Camera</b><br>
-			Camera device and V4L2 controls.
+			<img src="images/fullsizescreen.png" width="150" alt="Full Size Screen Preview"><br>
+			<b>Full Size Screen</b><br>
+			Full UI.
 		</td>
 		<td></td>
 	</tr>
