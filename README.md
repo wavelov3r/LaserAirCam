@@ -2,8 +2,8 @@
 **Smart Raspberry Pi companion for laser engravers**  
 *Wi-Fi Camera • Serial Gateway • AirAssist Control • Visual Status Feedback*
 
-[![Hardware](https://img.shields.io/badge/Hardware-Raspberry%20Pi-C51A4A?style=flat-square&logo=raspberry-pi)](./setup.md)
-[![Integration](https://img.shields.io/badge/Home%20Assistant-Ready-41BDF5?style=flat-square&logo=home-assistant)](./setup.md)
+[![Hardware](https://img.shields.io/badge/Hardware-Raspberry%20Pi-C51A4A?style=flat-square&logo=raspberry-pi)](./docs/setup.md)
+[![Integration](https://img.shields.io/badge/Home%20Assistant-Ready-41BDF5?style=flat-square&logo=home-assistant)](./docs/setup.md)
 [![Protocol](https://img.shields.io/badge/Protocol-MQTT%20%7C%20GRBL-orange?style=flat-square)](#)
 
 > LaserAirCam is an all-in-one control node designed to make your laser setup cleaner, safer, and synchronized. It combines HD streaming, robust wireless serial, and automated hardware feedback.
@@ -21,13 +21,13 @@
 ---
 
 ### 🏁 Quick Start
-1. Flash your Raspberry Pi and follow the detailed guide in [**setup.md**](./setup.md).
+1. Flash your Raspberry Pi and follow the detailed guide in [**setup.md**](./docs/setup.md).
 2. Configure your Virtual COM port on PC and point LightBurn to the device IP.
 3. Enjoy a wireless, automated, and visually interactive laser engraving experience.
 
-**🖥️ Hardware Requirements:** [See hwreq.md](./hwreq.md)
+**🖥️ Hardware Requirements:** [See Hardware requirements](./docs/hwreq.md)
 
-[**📚 Full Setup Guide**](./setup.md) | [**🐞 Report Issue**](../../issues) | [**💡 Suggest Feature**](../../discussions)
+[**📚 Full Setup Guide**](./docs/setup.md) | [**🐞 Report Issue**](../../issues) | [**💡 Suggest Feature**](../../discussions)
 
 
 
