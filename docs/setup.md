@@ -176,7 +176,7 @@ pip3 install rpi_ws281x adafruit-circuitpython-neopixel --break-system-packgages
 If you use a virtual environment, install them with pip inside the venv:
 
 ```sh
-pip install rpi_ws281x adafruit-circuitpython-neopixel
+pip3 install rpi_ws281x adafruit-circuitpython-neopixel
 ```
 
 ---
