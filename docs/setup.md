@@ -169,14 +169,14 @@ sudo apt install python3 python3-pip -y
 The following modules are also required for LED. MQTT and GPIO control:
 
 ```sh
-sudo apt install python3-rpi.gpio -y
-pip3 install rpi_ws281x adafruit-circuitpython-neopixel python3-paho-mqtt
+sudo apt install python3-rpi.gpio python3-paho-mqtt -y
+pip3 install rpi_ws281x adafruit-circuitpython-neopixel --break-system-packgages
 
 ```
 If you use a virtual environment, install them with pip inside the venv:
 
 ```sh
-pip install rpi_ws281x adafruit-circuitpython-neopixel RPi.GPIO
+pip install rpi_ws281x adafruit-circuitpython-neopixel
 ```
 
 ---
