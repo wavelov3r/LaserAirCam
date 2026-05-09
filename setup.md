@@ -5,6 +5,7 @@
   *Note: Other cameras may overload the system and require different libraries (e.g., libcamera)*
 - **WS2812 Addressable LED Strip** (e.g., 11.5mm wide)
 - **2 or 3 lever micro switches** (for buttons)
+- **DC/DC Buck converter** (for buttons
 - **LR784 MOSFET module** (only if you want to add air assist)
 - **24V DC air assist pump** (e.g., Lasertree)
 - **Tools to cut the engraver top** (grinder, dremel, etc.)
