@@ -173,17 +173,26 @@ sudo apt install python3-pil -y
 
 ### 5.3 Additional Required Python Modules
 
-The following modules are also required for LED and GPIO control:
+The following modules are also required for LED and GPIO control; unfortunately the neopixel module needs to be compiled, so we need:
+
+```sh
+sudo apt install gcc g++ make build-essential python3-dev
+```
+ant then:
 
 ```sh
 sudo apt install python3-rpi.gpio -y
 sudo pip3 install rpi_ws281x adafruit-circuitpython-neopixel --break-system-packages
-
 ```
 
 - `python3-rpi.gpio` provides the RPi.GPIO library for GPIO pin control.
 - `rpi_ws281x` and `adafruit-circuitpython-neopixel` are required for WS2812 (NeoPixel) LED control.
 
+you can nov , and autopurge to free disk space
+```sh
+sudo apt purge gcc g++ make build-essential python3-dev
+sudo apt autopurge
+```
 ---
 
 
