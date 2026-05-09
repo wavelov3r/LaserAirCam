@@ -203,11 +203,9 @@ sudo apt autoremove --purge -y
 
 ## 6. LaserAirCam Setup
 
-1. Create a project directory and clone the repository:
+1. Create a project directory and clone the repository or unzip it into laseraircam dir:
 
 ```sh
-sudo apt install git
-
 git clone https://github.com/wavelov3r/LaserAirCam.git laseraircam && cd laseraircam
 cd laseraircam
 ```
