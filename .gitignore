@@ -1,13 +1,14 @@
 # Ignore all
 *
 
-# Don't ignore dirs (but files inside yes)
+# Don't ignore dirs
 !*/
 
 # Keep
 !settings.py
 !laseraircam.py
-!laseraircam_mqtt.py
+!modules/
+!modules/*.py
 
 # avoid system files and cache
 __pycache__/
