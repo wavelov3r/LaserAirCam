@@ -95,7 +95,11 @@
 
 <p align="center">
   💳 Buy me a beer 🍺🍺 <br><br>
-  <a href="https://www.paypal.com/donate/?business=FLZVTMNJVW9D2&amount=6&no_recurring=1&item_name=LaserAirCam&currency_code=EUR">
-    <img src="https://www.paypalobjects.com/en_US/IT/i/btn/btn_donateCC_LG.gif" alt="Donate with PayPal">
+
+  <a href="https://www.paypal.com/donate/?business=FLZVTMNJVW9D2&currency_code=EUR">
+    <img 
+      src="https://www.paypalobjects.com/en_US/IT/i/btn/btn_donateCC_LG.gif" 
+      alt="Donate with PayPal"
+    >
   </a>
 </p>
