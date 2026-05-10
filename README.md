@@ -1,4 +1,7 @@
-# 🛰️ LaserAirCam
+<h1>
+  <img src="images/icon.png" alt="LaserAirCam Icon" width="50" style="vertical-align:middle; margin-right:10px;">
+  LaserAirCam
+</h1>
 **Smart Raspberry Pi companion for laser engravers**  
 *Wi-Fi Camera • Serial Gateway • AirAssist Control • Visual Status Feedback*
 
