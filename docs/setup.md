@@ -49,11 +49,10 @@ Save and exit (`CTRL+X`, `Y`, `Enter`).
 ```sh
 sudo apt update
 sudo apt install v4l-utils -y
+sudo rm /etc/modprobe.d/dietpi-disable_rpi_camera.conf
 echo "bcm2835-v4l2" | sudo tee /etc/modules-load.d/bcm2835-v4l2.conf
 sudo modprobe bcm2835-v4l2
 ```
-
-Reboot the Raspberry Pi.
 
 ### 2.3 Check Camera Detection
 
