@@ -125,14 +125,11 @@ Configuration (check the serial connector, leave untouched the 2000 port as it i
 %YAML 1.1
 ---
 # Config ser2net
-define: &banner \r\nser2net port \p device \d [\B] (DietPi)\r\n\r\n
 connection: &usb0
   accepter: tcp,2000
   enable: on
   options:
-    banner: *banner
-    kickolduser: true
-    telnet-brk-on-sync: true
+    kickolduser: false
   connector: serialdev,
     /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0,
     115200n81,local
