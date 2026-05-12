@@ -38,7 +38,7 @@
 </table>
 
 <p align="center">
-	<b>🔗 <a href="./livedemo/index.html">Live Demo</a></b> <br>
+	<b>🔗 <a href="./livedemo/index.html">Download and execute a Live Demo</a></b> <br>
 	<i>(Demo data currently unavailable)</i>
 </p>
 
