@@ -1,8 +1,4 @@
-<h1>
-  <img src="images/icon.png" alt="LaserAirCam Icon" width="50" style="vertical-align:middle; margin-right:10px;">
-  LaserAirCam
-</h1>
-
+# <img src="images/icon.png" alt="LaserAirCam Icon" width="80" height="80" style="vertical-align:middle;"> LaserAirCam
 **Smart Raspberry Pi companion for laser engravers**  
 *Wi-Fi Camera • Serial Gateway • AirAssist Control • Visual Status Feedback*
 
@@ -14,24 +10,51 @@
 
 ---
 
+
 ### 🛠️ Key Features
 
-| 📷 Vision & UI | 🔌 Connectivity & Control | 💨 Automation & Body |
-| :--- | :--- | :--- |
-| 🖼️ **Smart Stream:** Live MJPEG (`/stream`), snapshots (`/snapshot`), and **StreamHD** (`/streamhd`) for timed high-res captures. | 📶 **Stable Wi-Fi Link:** Transparent serial via `ser2net` & Virtual COM. Monitors GRBL traffic end-to-end for total stability. | 🌬️ **AirAssist:** 24V PWM control. Automatic mode (laser-power based) with manual override via UI or Home Assistant. |
-| 💻 **WebUI & API:** Full browser dashboard for laser status, LEDs, and system. Fast API endpoints for custom automation. | 🔁 **Serial Gateway:** Intercepts traffic; if LightBurn is active, manual commands are safely queued and sent when possible. | 🌈 **RGB Status:** Addressable LED profiles: `idle`, `running`, `engraving`, `hold/pause`, `error`, and `door` alerts. |
-| 🏠 **MQTT + HA:** Native bridge with auto-discovery. Exposes camera, status, and control entities for smart workflows. | 📡 **Remote Ready:** Designed for reliable long-range control, eliminating unstable and messy USB cable runs. | 📦 **Hardware:** 3x physical buttons for local interaction + custom 3D-printed case for Atomstack A1 & similar. |
+<table>
+	<tr>
+		<td valign="top" width="50%">
+			<ul>
+				<li><b>🖼️ Smart Stream:</b> Live MJPEG (<code>/stream</code>), snapshots (<code>/snapshot</code>), and <b>StreamHD</b> (<code>/streamhd</code>) for timed high-res captures.</li>
+				<li><b>💻 WebUI & API:</b> Full browser dashboard for laser status, LEDs, and system. Fast API endpoints for custom automation.</li>
+				<li><b>🏠 MQTT + Home Assistant:</b> Native bridge with auto-discovery. Exposes camera, status, and control entities for smart workflows.</li>
+				<li><b>🌈 RGB Status:</b> Addressable LED profiles: <code>idle</code>, <code>running</code>, <code>engraving</code>, <code>hold/pause</code>, <code>error</code>, and <code>door</code> alerts.</li>
+				<li><b>📦 Hardware:</b> 3x physical buttons for local interaction + custom 3D-printed case for Atomstack A1 & similar.</li>
+			</ul>
+		</td>
+		<td valign="top" width="50%">
+			<ul>
+				<li><b>📶 Stable Wi-Fi Link:</b> Transparent serial via <code>ser2net</code> & Virtual COM. Monitors GRBL traffic end-to-end for total stability.</li>
+				<li><b>🔁 Serial Gateway:</b> Intercepts traffic; if LightBurn is active, manual commands are safely queued and sent when possible.</li>
+				<li><b>🌬️ AirAssist:</b> 24V PWM control. Automatic mode (laser-power based) with manual override via UI or Home Assistant.</li>
+				<li><b>📡 Remote Ready:</b> Designed for reliable long-range control, eliminating unstable and messy USB cable runs.</li>
+				<li><b>🆕 Hybrid or Complete Passthrough:</b> Allows you to control the laser even when LightBurn is connected, enabling advanced workflows and manual overrides without disconnecting.</li>
+				<li><b>🆕 GCODE Reading for AirAssist:</b> Reads GCODE sent by LightBurn to quickly set AirAssist based on material or cut layer, with automatic on/off and optimized settings for each job.</li>
+			</ul>
+		</td>
+	</tr>
+</table>
+
+<p align="center">
+	<b>🔗 <a href="./livedemo/index.html">Live Demo</a></b> <br>
+	<i>(Demo data currently unavailable)</i>
+</p>
 
 ---
 
 ### 🏁 Quick Start
-1. Flash your Raspberry Pi and follow the detailed guide in [**setup.md**](./docs/setup.md).
-2. Configure your Virtual COM port on PC and point LightBurn to the device IP.
-3. Enjoy a wireless, automated, and visually interactive laser engraving experience.
+1. Flash your Raspberry Pi with an OS using Raspberry Pi Imager.
+2. Follow the detailed instructions in the [**setup guide**](./docs/setup.md) to configure the Virtual COM port over LAN, camera, Ustreamer, and install all dependencies (LEDs and Python packages).
+3. On your PC, configure LightBurn to use the virtual COM port over LAN.
+4. Enjoy a wireless, automated, and visually interactive laser engraving experience.
+
 
 **🖥️ Hardware Requirements:** [See Hardware requirements](./docs/hwreq.md)
-
-[**📚 Full Setup Guide**](./docs/setup.md) | [**🐞 Report Issue**](../../issues) | [**💡 Suggest Feature**](../../discussions)
+[**📚 Full Setup Guide**](./docs/setup.md)
+[**🐞 Report Issue**](../../issues)
+[**💡 Suggest Feature**](../../discussions)
 
 
 
@@ -92,6 +115,7 @@
 		</td>
 	</tr>
 </table>
+
 
 <p align="center">
   💳 Buy me a beer 🍺🍺 <br><br>
