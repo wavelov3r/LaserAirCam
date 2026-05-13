@@ -51,10 +51,10 @@
 4. Enjoy a wireless, automated, and visually interactive laser engraving experience.
 
 
-[**🖥️ Hardware Requirements:**](./docs/hwreq.md)|
-[**📚 Setup Guide**](./docs/setup.md)|
-[**🐞 Report Issue**](../../issues)|
-[**💡 Suggest Feature**](../../discussions)
+[**| 🖥️ Hardware Requirements:**](./docs/hwreq.md)
+[**| 📚 Setup Guide**](./docs/setup.md)
+[**| 🐞 Report Issue**](../../issues)
+[**| 💡 Suggest Feature**|](../../discussions)
 
 
 
