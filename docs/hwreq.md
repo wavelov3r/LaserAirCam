@@ -29,5 +29,5 @@
 
 - ✂️ **Centering the camera hole in the top cover:** Remove the top cover and cover it with adhesive paper, place it under the machine with the bottom door open, and trace the outline from above. Print a cutting guide and align it with your mark to ensure the hole is centered. Hold the cover firmly and refine the hole with a file — do not let the top cover move or rotate in the hole, or you will lose the camera alignment settings.
 
-<img src="../images/cut1.jpeg" width="150" height="150" alt="cut1" />  <img src="../images/cut2.jpeg" width="150" height="150" alt="cut2" />  <img src="../images/cut3.jpeg" width="150" height="150" alt="cut3" />
+<img src="../images/cut1.jpeg" width="150" height="150" alt="cut1" />  <img src="../images/cut2.jpeg" width="150" height="150" alt="cut2" />  <img src="../images/cut3.jpeg" width="150" height="150" alt="cut3" /> <img src="../images/cut4.jpeg" width="150" height="150" alt="cut4" />
 
