@@ -21,13 +21,13 @@
 
 - ⚡ **LED connection & grounding:** Connect the LEDs to a PWM-capable GPIO (PIN 32, `GPIO12` — note this in `settings.py`) for better stability. The LED negative and the Raspberry Pi ground (and the 24V ground if you use air-assist) must be common. My LEDs are 5V, so I power them from the stepper DC/DC, which also powers the Pi Zero W via the GPIO (check the pinout online; I used PINs 4 & 6). I use WS2812B (60 LEDs/m); to save on the power supply you can use 30 LEDs/m — they are sufficient.
 
-  <img src="../images/leds.png" width="150" height="150" alt="LEDs" />
+  <img src="../images/leds.png"  height="150" alt="LEDs" />
 
 - 🔲 **Microswitches:** Use the small rectangular microswitches (standard size). You may need to remove the metal tab to fit them into the case and space them with shims. All switches share a common ground (one wire from the Pi Zero is enough), and the Normally Open contact goes to a GPIO (one GPIO per button — note these in `settings.py`).
 
-  <img src="../images/switch.jpg" width="150" height="150" alt="Micro switch" />
+  <img src="../images/switch.jpg"  height="150" alt="Micro switch" />
 
 - ✂️ **Centering the camera hole in the top cover:** Remove the top cover and cover it with adhesive paper, place it under the machine with the bottom door open, and trace the outline from above. Print a cutting guide and align it with your mark to ensure the hole is centered. Hold the cover firmly and refine the hole with a file — do not let the top cover move or rotate in the hole, or you will lose the camera alignment settings.
 
-<img src="../images/cut1.jpeg" width="150" height="150" alt="cut1" />  <img src="../images/cut2.jpeg" width="150" height="150" alt="cut2" />  <img src="../images/cut3.jpeg" width="150" height="150" alt="cut3" /> <img src="../images/cut4.jpeg" width="150" height="150" alt="cut4" />
+<img src="../images/cut1.jpeg"  height="150" alt="cut1" />  <img src="../images/cut2.jpeg"  height="150" alt="cut2" />  <img src="../images/cut3.jpeg"  height="150" alt="cut3" /> <img src="../images/cut4.jpeg"  height="150" alt="cut4" />
 
