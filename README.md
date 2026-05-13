@@ -38,21 +38,21 @@
 </table>
 
 <p align="center">
-	<b>🔗 <a href="./livedemo/index.html">Download and execute a Live Demo</a></b> <br>
+	<b>🔗 <a href="https://wavelov3r.github.io/LaserAirCam/">Try a Live Demo</a></b> <br>
 	<i>(Demo data currently unavailable)</i>
 </p>
 
 ---
 
 ### 🏁 Quick Start
-1. Flash your Raspberry Pi with an OS using Raspberry Pi Imager.
-2. Follow the detailed instructions in the [**setup guide**](./docs/setup.md) to configure the Virtual COM port over LAN, camera, Ustreamer, and install all dependencies (LEDs and Python packages).
-3. On your PC, configure LightBurn to use the virtual COM port over LAN.
+1. Flash your Raspberry Pi with an OS using Raspberry Pi Imager (DietPi advised).
+2. Follow the detailed instructions in the [**setup guide**](./docs/setup.md) to configure the Virtual COM port over LAN, camera, Ustreamer, and install all dependencies (LEDs and Python packages) before installing LaserAirCam.
+3. On your PC, configure LightBurn to use the virtual COM port over LAN (Initialized by HW Virtual Serial port); point the Camera source to the raspberryPi.
 4. Enjoy a wireless, automated, and visually interactive laser engraving experience.
 
 
 **🖥️ Hardware Requirements:** [See Hardware requirements](./docs/hwreq.md)
-[**📚 Full Setup Guide**](./docs/setup.md)
+[**📚 Setup Guide**](./docs/setup.md)
 [**🐞 Report Issue**](../../issues)
 [**💡 Suggest Feature**](../../discussions)
 
