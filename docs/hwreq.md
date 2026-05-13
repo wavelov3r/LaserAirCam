@@ -25,7 +25,7 @@
 
 - 🔲 **Microswitches:** Use the small rectangular microswitches (standard size). You may need to remove the metal tab to fit them into the case and space them with shims. All switches share a common ground (one wire from the Pi Zero is enough), and the Normally Open contact goes to a GPIO (one GPIO per button — note these in `settings.py`).
 
-  <img src="../images/switch.png" width="150" height="150" alt="Micro switch" />
+  <img src="../images/switch.jpg" width="150" height="150" alt="Micro switch" />
 
 - ✂️ **Centering the camera hole in the top cover:** Remove the top cover and cover it with adhesive paper, place it under the machine with the bottom door open, and trace the outline from above. Print a cutting guide and align it with your mark to ensure the hole is centered. Hold the cover firmly and refine the hole with a file — do not let the top cover move or rotate in the hole, or you will lose the camera alignment settings.
 
