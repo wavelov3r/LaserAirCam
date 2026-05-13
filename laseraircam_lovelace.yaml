@@ -1,0 +1,316 @@
+type: vertical-stack
+cards:
+  - type: markdown
+    content: |
+      # Laser AirCam
+  - type: grid
+    columns: 2
+    square: false
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - show_state: false
+                show_name: false
+                camera_view: auto
+                fit_mode: cover
+                type: picture-entity
+                entity: camera.lasercam_camera_live_feed
+                name: MQTT Camera
+              - square: false
+                type: grid
+                columns: 3
+                cards:
+                  - type: button
+                    name: " "
+                    show_icon: false
+                    tap_action:
+                      action: none
+                  - type: button
+                    entity: button.lasercam_laser_jog_up
+                    show_name: false
+                    icon: mdi:arrow-up-bold
+                    icon_height: 18px
+                    tap_action:
+                      action: call-service
+                      service: button.press
+                      target:
+                        entity_id: button.lasercam_laser_jog_up
+                  - type: button
+                    name: " "
+                    show_icon: false
+                    tap_action:
+                      action: none
+                  - type: button
+                    entity: button.lasercam_laser_jog_left
+                    show_name: false
+                    icon: mdi:arrow-left-bold
+                    icon_height: 18px
+                    tap_action:
+                      action: call-service
+                      service: button.press
+                      target:
+                        entity_id: button.lasercam_laser_jog_left
+                  - type: button
+                    entity: button.lasercam_laser_jog_home
+                    show_name: false
+                    icon: mdi:home-import-outline
+                    icon_height: 18px
+                    tap_action:
+                      action: call-service
+                      service: button.press
+                      target:
+                        entity_id: button.lasercam_laser_jog_home
+                  - type: button
+                    entity: button.lasercam_laser_jog_right
+                    show_name: false
+                    icon: mdi:arrow-right-bold
+                    icon_height: 18px
+                    tap_action:
+                      action: call-service
+                      service: button.press
+                      target:
+                        entity_id: button.lasercam_laser_jog_right
+                  - type: button
+                    name: " "
+                    show_icon: false
+                    tap_action:
+                      action: none
+                  - type: button
+                    entity: button.lasercam_laser_jog_down
+                    show_name: false
+                    icon: mdi:arrow-down-bold
+                    icon_height: 18px
+                    tap_action:
+                      action: call-service
+                      service: button.press
+                      target:
+                        entity_id: button.lasercam_laser_jog_down
+                  - type: button
+                    name: " "
+                    show_icon: false
+                    tap_action:
+                      action: none
+          - type: entities
+            title: Camera Links and Status
+            show_header_toggle: false
+            entities:
+              - entity: switch.lasercam_camera_mqtt_image_feed
+                name: MQTT Image Feed
+              - entity: sensor.lasercam_camera_stream_url
+                name: Camera StreamHD URL
+              - entity: sensor.lasercam_camera_streamhd_url
+                name: Camera StreamHD URL
+              - entity: sensor.lasercam_camera_snapshot_url
+                name: Camera StreamHD URL
+          - type: entities
+            title: Visual Feedback - Laser and System
+            show_header_toggle: false
+            entities:
+              - entity: sensor.lasercam_laser_state
+                name: Laser State
+              - entity: binary_sensor.lasercam_laser_active
+                name: Laser Active
+              - entity: binary_sensor.lasercam_laser_serial_traffic_active
+                name: Laser Serial Traffic
+              - entity: sensor.lasercam_laser_last_error
+                name: Laser Last Error
+              - entity: sensor.lasercam_cpu_usage
+                name: CPU Usage
+              - entity: sensor.lasercam_ram_usage
+                name: RAM Usage
+              - entity: sensor.lasercam_cpu_temperature
+                name: CPU Temperature
+          - type: entities
+            title: Video Controls - Streaming
+            show_header_toggle: false
+            entities:
+              - entity: select.lasercam_power_line_frequency
+                name: Power Line Frequency
+              - entity: select.lasercam_exposure
+                name: Exposure
+              - entity: number.lasercam_exposure_time
+                name: Exposure Time
+              - entity: select.lasercam_exposure_compensation
+                name: Exposure Compensation
+              - entity: select.lasercam_white_balance
+                name: White Balance
+              - entity: select.lasercam_exposure_metering
+                name: Exposure Metering
+              - entity: select.lasercam_scene
+                name: Scene
+              - entity: switch.lasercam_dynamic_fps
+                name: Dynamic FPS
+              - entity: switch.lasercam_horizontal_flip
+                name: Horizontal Flip
+              - entity: switch.lasercam_vertical_flip
+                name: Vertical Flip
+              - entity: select.lasercam_rotation
+                name: Rotation
+              - entity: number.lasercam_camera_streamhd_interval
+                name: Camera StreamHD Interval
+          - type: entities
+            title: Video Controls - Image Quality
+            show_header_toggle: false
+            entities:
+              - entity: number.lasercam_jpeg_quality
+                name: JPEG Quality
+              - entity: select.lasercam_iso_auto
+                name: ISO Auto
+              - entity: select.lasercam_iso_manual
+                name: ISO Manual
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: button
+                entity: button.lasercam_laser_clear_error
+                name: Clear err.
+                show_name: true
+                icon_height: 18px
+                icon: mdi:alert-remove
+                tap_action:
+                  action: call-service
+                  service: button.press
+                  target:
+                    entity_id: button.lasercam_laser_clear_error
+              - type: button
+                entity: button.lasercam_system_reboot
+                name: Reboot
+                show_name: true
+                icon_height: 18px
+                icon: mdi:restart
+                tap_action:
+                  action: call-service
+                  service: button.press
+                  target:
+                    entity_id: button.lasercam_system_reboot
+              - type: button
+                entity: button.lasercam_system_shutdown
+                name: Shutdown
+                show_name: true
+                icon_height: 18px
+                icon: mdi:power
+                tap_action:
+                  action: call-service
+                  service: button.press
+                  target:
+                    entity_id: button.lasercam_system_shutdown
+          - type: entities
+            show_header_toggle: false
+            entities:
+              - entity: light.lasercam_led
+                name: Strip LED
+              - entity: number.lasercam_led_brightness
+                name: LED Brightness
+          - type: entities
+            title: Basic LED Controls
+            show_header_toggle: false
+            entities:
+              - entity: select.lasercam_led_effect
+                name: LED Effect
+              - entity: select.lasercam_led_color_mode
+                name: LED Color Mode
+              - entity: select.lasercam_led_preset
+                name: LED Preset
+              - entity: number.lasercam_led_preset_intensity
+                name: Preset Intensity
+          - type: entities
+            title: Laser Controls - Automation
+            show_header_toggle: false
+            entities:
+              - entity: switch.lasercam_led_on_at_boot
+                name: LED on Boot
+              - entity: switch.lasercam_laser_serial_proxy_enabled
+                name: Laser Serial Proxy
+              - entity: switch.lasercam_laser_led_sync
+                name: LED Sync with Laser State
+          - type: entities
+            title: Laser Custom G-code
+            show_header_toggle: false
+            entities:
+              - entity: text.lasercam_laser_custom_g_code
+                name: Custom G-code (Enter to send)
+              - entity: button.lasercam_laser_go_custom_position
+                name: Go Custom Position
+              - entity: number.lasercam_laser_custom_position_x_mm
+                name: Custom Pos X (mm)
+              - entity: number.lasercam_laser_custom_position_y_mm
+                name: Custom Pos Y (mm)
+              - entity: number.lasercam_laser_custom_position_z_mm
+                name: Custom Pos Z (mm)
+              - entity: switch.lasercam_laser_custom_position_use_g0
+                name: Use G0 (OFF = G1)
+              - entity: number.lasercam_laser_move_step_mm
+                name: Move Step (mm)
+              - entity: number.lasercam_laser_move_speed_mm_min
+                name: Move Speed (mm/min)
+              - entity: sensor.lasercam_laser_last_tx_command
+                name: Last TX Command
+              - entity: sensor.lasercam_laser_last_command
+              - entity: sensor.lasercam_laser_serial_mode
+                name: Serial Mode
+              - entity: sensor.lasercam_laser_serial_clients
+                name: Connected Clients
+              - entity: sensor.lasercam_laser_serial_queue_depth
+                name: Queue Depth
+          - type: horizontal-stack
+            cards:
+              - type: button
+                name: Send M8
+                icon: mdi:air-purifier
+                icon_height: 18px
+                tap_action:
+                  action: call-service
+                  service: text.set_value
+                  target:
+                    entity_id: text.lasercam_laser_custom_g_code
+                  data:
+                    value: M8
+              - type: button
+                name: Send M9
+                icon: mdi:air-purifier-off
+                icon_height: 18px
+                tap_action:
+                  action: call-service
+                  service: text.set_value
+                  target:
+                    entity_id: text.lasercam_laser_custom_g_code
+                  data:
+                    value: M9
+          - type: entities
+            title: LED Profiles by Laser State
+            show_header_toggle: false
+            entities:
+              - entity: select.lasercam_laser_idle_effect
+                name: Idle Effect
+              - entity: select.lasercam_laser_idle_color_mode
+                name: Idle Color Mode
+              - entity: select.lasercam_laser_running_effect
+                name: Running Effect
+              - entity: select.lasercam_laser_running_color_mode
+                name: Running Color Mode
+              - entity: select.lasercam_laser_error_effect
+                name: Error Effect
+              - entity: select.lasercam_laser_error_color_mode
+                name: Error Color Mode
+              - entity: select.lasercam_laser_engrave_complete_effect
+                name: Engrave Complete Effect
+              - entity: select.lasercam_laser_engrave_complete_color_mode
+                name: Engrave Complete Color Mode
+          - type: entities
+            title: Air Assist
+            show_header_toggle: false
+            entities:
+              - entity: switch.lasercam_air_assist
+                name: Air Assist ON
+              - entity: switch.lasercam_air_assist_auto
+                name: Progressive AirAssist
+              - entity: number.lasercam_air_assist_speed
+                name: Air Assist Fixed Speed (%)
+              - entity: number.lasercam_air_assist_start_at_beam_power
+                name: Progressive AirAssist Start @ Beam Power (%)
+              - entity: number.lasercam_air_assist_max_flow_at_beam_power
+                name: Progressive AirAssist Max Flow @ Beam Power (%)
+
