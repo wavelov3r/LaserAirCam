@@ -1,0 +1,520 @@
+<!doctype html>
+			<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Camera v4l2 Controls</title>
+	<link rel="manifest" href="/manifest.webmanifest">
+	<meta name="theme-color" content="#0c3a66">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="msapplication-TileColor" content="#0c3a66">
+	<link rel="icon" type="image/png" sizes="192x192" href="/pwa-icon-192.png">
+	<link rel="icon" type="image/png" sizes="512x512" href="/pwa-icon-512.png">
+	<link rel="apple-touch-icon" href="/pwa-icon-192.png">
+	<style>
+		:root {
+			--bg1: #041a2f;
+			--bg2: #0c3a66;
+			--bg3: #16558b;
+			--card: rgba(7, 26, 45, 0.82);
+			--text: #eaf4ff;
+			--muted: #b7d3ef;
+			--accent: #74c2ff;
+			--accent2: #2f8ee5;
+			--line: rgba(140, 199, 255, 0.33);
+		}
+		* { box-sizing: border-box; }
+		body {
+			margin: 0;
+			min-height: 100vh;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			color: var(--text);
+			background:
+				radial-gradient(circle at 10% 10%, rgba(116, 194, 255, 0.22), transparent 36%),
+				radial-gradient(circle at 92% 16%, rgba(47, 142, 229, 0.22), transparent 34%),
+				linear-gradient(130deg, var(--bg1), var(--bg2) 52%, var(--bg3));
+			padding: 12px;
+		}
+		.layout {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 12px;
+			max-width: 1800px;
+			margin: 0 auto;
+		}
+		.card {
+			background: var(--card);
+			border: 1px solid var(--line);
+			border-radius: 16px;
+			padding: 14px;
+			backdrop-filter: blur(9px);
+			box-shadow: 0 14px 34px rgba(0, 20, 43, 0.42);
+		}
+		h1 { margin: 0 0 6px; font-size: 1.2rem; }
+		.lead { margin: 0 0 12px; color: var(--muted); font-size: 0.9rem; }
+		.toolbar {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 8px;
+			margin-bottom: 12px;
+		}
+		button {
+			width: 100%;
+			border-radius: 10px;
+			border: 1px solid rgba(179, 222, 255, 0.78);
+			padding: 8px 10px;
+			font-size: 0.88rem;
+			font-weight: 700;
+			cursor: pointer;
+			background: linear-gradient(120deg, var(--accent2), var(--accent));
+			color: #042641;
+		}
+		button.secondary {
+			background: linear-gradient(120deg, #184f81, #2d77b8);
+			color: #dff0ff;
+			border-color: rgba(140, 199, 255, 0.48);
+		}
+		button:disabled { opacity: 0.7; cursor: wait; }
+		#controls {
+			display: grid;
+			gap: 9px;
+			max-height: calc(100vh - 190px);
+			overflow: auto;
+			padding-right: 4px;
+		}
+		.ctrl {
+			padding: 10px;
+			border-radius: 10px;
+			background: rgba(116, 194, 255, 0.08);
+			border: 1px solid rgba(116, 194, 255, 0.24);
+		}
+		.ctrl-head {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 8px;
+			margin-bottom: 7px;
+			font-size: 0.86rem;
+		}
+		.ctrl-val { font-weight: 700; color: #e8f4ff; }
+		input[type="range"], select {
+			width: 100%;
+			border-radius: 8px;
+			border: 1px solid rgba(140, 199, 255, 0.33);
+			background: rgba(6, 31, 56, 0.78);
+			color: var(--text);
+			padding: 7px 9px;
+			font-size: 0.88rem;
+		}
+		.ctrl select {
+			width: 84%;
+			min-width: 210px;
+			max-width: 360px;
+		}
+		select option { background: #0a2a4a; color: #eaf4ff; }
+		.ctrl-check {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			color: var(--muted);
+			font-size: 0.86rem;
+		}
+		.status { margin-top: 10px; color: var(--muted); font-size: 0.86rem; min-height: 1.1rem; }
+		#controls {
+			scrollbar-width: thin;
+			scrollbar-color: rgba(116, 194, 255, 0.8) rgba(8, 33, 61, 0.55);
+		}
+		#controls::-webkit-scrollbar {
+			width: 10px;
+		}
+		#controls::-webkit-scrollbar-track {
+			background: linear-gradient(180deg, rgba(6, 25, 45, 0.75), rgba(10, 36, 62, 0.75));
+			border-radius: 999px;
+			border: 1px solid rgba(116, 194, 255, 0.2);
+		}
+		#controls::-webkit-scrollbar-thumb {
+			background: linear-gradient(180deg, #82cbff, #4f9fe5);
+			border-radius: 999px;
+			border: 2px solid rgba(5, 24, 43, 0.85);
+		}
+		#controls::-webkit-scrollbar-thumb:hover {
+			background: linear-gradient(180deg, #9dd9ff, #64b1f2);
+		}
+		.preview-wrap {
+			height: 100%;
+			display: grid;
+			gap: 10px;
+			grid-template-rows: auto 1fr;
+		}
+		.preview-sticky {
+			position: sticky;
+			top: 12px;
+			align-self: start;
+			max-height: calc(100vh - 24px);
+		}
+		.preview-box {
+			position: relative;
+			background: rgba(116, 194, 255, 0.08);
+			border: 1px solid rgba(116, 194, 255, 0.24);
+			border-radius: 12px;
+			padding: 10px;
+			height: min(74vh, calc(100vh - 150px));
+			min-height: 240px;
+		}
+		.fullscreen-btn {
+			position: absolute;
+			top: 14px;
+			right: 14px;
+			z-index: 20;
+			width: auto;
+			padding: 4px 8px;
+			border-radius: 8px;
+			font-size: 0.78rem;
+			font-weight: 700;
+			letter-spacing: 0.03em;
+			background: rgba(5, 26, 47, 0.6);
+			color: #dff2ff;
+			border: 1px solid rgba(140, 199, 255, 0.45);
+			backdrop-filter: blur(4px);
+			opacity: 0.8;
+		}
+		.fullscreen-btn:hover {
+			opacity: 1;
+			background: rgba(8, 36, 64, 0.85);
+		}
+		.preview-box img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			background: #000;
+			border-radius: 10px;
+			border: 1px solid rgba(140, 199, 255, 0.45);
+		}
+		.preview-note { color: var(--muted); font-size: 0.84rem; }
+		@media (max-width: 980px) {
+			.layout { grid-template-columns: 1fr; }
+			#controls { max-height: none; }
+			.preview-sticky {
+				position: static;
+				top: auto;
+				max-height: none;
+			}
+			.preview-box {
+				height: auto;
+				min-height: 220px;
+			}
+			.preview-box img {
+				height: auto;
+				aspect-ratio: 4 / 3;
+			}
+		}
+	</style>
+</head>
+<body>
+	<main class="layout">
+		<section class="card">
+			<h1>V4L2 Camera Parameters</h1>
+			<p class="lead">Adjust quality and auto controls in real time, then save the profile to restore it at startup.</p>
+			<div class="toolbar">
+				<button id="goBack" class="secondary">Back to Dashboard</button>
+				<button id="reloadBtn" class="secondary">Reload</button>
+				<button id="resetDefaultsBtn" class="secondary">Reset Default Driver</button>
+				<button id="saveBtn">Save Profile</button>
+			</div>
+			<div id="controls"></div>
+			<div class="status" id="status">Loading parameters...<br>AirAssist: <span id="airAssistStatusText">--</span></div>
+		</section>
+		<section class="card preview-wrap preview-sticky">
+			<div>
+				<h1>Preview Live</h1>
+				<p class="preview-note">Preview stream</p>
+			</div>
+			<div class="preview-box">
+				<button id="previewFullscreenBtn" class="fullscreen-btn" type="button" title="Fullscreen">fullscreen</button>
+				<img id="preview" src="" alt="Preview camera">
+			</div>
+		</section>
+	</main>
+
+	<script>
+		const statusEl = document.getElementById('status');
+		const controlsEl = document.getElementById('controls');
+		const previewEl = document.getElementById('preview');
+		const previewFullscreenBtn = document.getElementById('previewFullscreenBtn');
+		const saveBtn = document.getElementById('saveBtn');
+		const reloadBtn = document.getElementById('reloadBtn');
+		const resetDefaultsBtn = document.getElementById('resetDefaultsBtn');
+		const order = [
+			'brightness',
+			'contrast',
+			'saturation',
+			'sharpness',
+			'compression_quality',
+			'power_line_frequency',
+			'rotate',
+			'horizontal_flip',
+			'vertical_flip',
+			'auto_exposure',
+			'exposure_time_absolute',
+			'exposure_dynamic_framerate',
+			'auto_exposure_bias',
+			'white_balance_auto_preset',
+			'iso_sensitivity_auto',
+			'iso_sensitivity',
+			'exposure_metering_mode',
+			'scene_mode'
+		];
+		const labels = {
+			brightness: 'Brightness',
+			contrast: 'Contrast',
+			saturation: 'Saturation',
+			sharpness: 'Sharpness',
+			compression_quality: 'JPEG Quality',
+			power_line_frequency: 'Power Line Filter',
+			rotate: 'Rotate',
+			horizontal_flip: 'Horizontal Flip',
+			vertical_flip: 'Vertical Flip',
+			auto_exposure: 'Exposure',
+			exposure_time_absolute: 'Exposure Time',
+			exposure_dynamic_framerate: 'Dynamic FPS',
+			auto_exposure_bias: 'Exposure Compensation',
+			white_balance_auto_preset: 'White Balance',
+			iso_sensitivity_auto: 'ISO Auto',
+			iso_sensitivity: 'ISO Manual',
+			exposure_metering_mode: 'Exposure Metering',
+			scene_mode: 'Scene'
+		};
+		let meta = {};
+		let current = {};
+		let previewTimer = null;
+		let streamFallbackUsed = false;
+
+		function setStatus(msg) { statusEl.textContent = msg; }
+
+		function streamStart() {
+			const mode = streamFallbackUsed ? '/streamhd' : '/stream';
+			previewEl.src = mode + '?t=' + Date.now();
+		}
+
+		previewEl.addEventListener('error', () => {
+			if (!streamFallbackUsed) {
+				streamFallbackUsed = true;
+				setStatus('Primary stream unavailable, trying StreamHD...');
+			}
+			setTimeout(streamStart, 1200);
+		});
+
+		previewEl.addEventListener('load', () => {
+			if (streamFallbackUsed) {
+				setStatus('Preview running on StreamHD (fallback).');
+			}
+		});
+
+		async function togglePreviewFullscreen() {
+			if (!document.fullscreenElement) {
+				try {
+					await previewEl.requestFullscreen();
+				} catch (err) {
+					setStatus('Fullscreen is not available in this browser.');
+				}
+				return;
+			}
+			await document.exitFullscreen();
+		}
+
+		previewFullscreenBtn.addEventListener('click', togglePreviewFullscreen);
+		previewEl.addEventListener('dblclick', togglePreviewFullscreen);
+		document.addEventListener('fullscreenchange', () => {
+			previewFullscreenBtn.textContent = document.fullscreenElement ? 'exit' : 'fullscreen';
+		});
+
+		function renderControl(name) {
+			const info = meta[name];
+			if (!info) return null;
+			const wrap = document.createElement('div');
+			wrap.className = 'ctrl';
+			const head = document.createElement('div');
+			head.className = 'ctrl-head';
+			const title = document.createElement('span');
+			title.textContent = labels[name] || name;
+			const valueLabel = document.createElement('span');
+			valueLabel.className = 'ctrl-val';
+			head.appendChild(title);
+			head.appendChild(valueLabel);
+			wrap.appendChild(head);
+
+			let input = null;
+			if (info.type === 'bool') {
+				const line = document.createElement('label');
+				line.className = 'ctrl-check';
+				input = document.createElement('input');
+				input.type = 'checkbox';
+				input.checked = Number(current[name] || 0) === 1;
+				valueLabel.textContent = input.checked ? 'ON' : 'OFF';
+				line.appendChild(input);
+				line.appendChild(document.createTextNode(input.checked ? 'Enabled' : 'Disabled'));
+				wrap.appendChild(line);
+				input.addEventListener('change', () => {
+					current[name] = input.checked ? 1 : 0;
+					valueLabel.textContent = input.checked ? 'ON' : 'OFF';
+					line.lastChild.textContent = input.checked ? 'Enabled' : 'Disabled';
+					schedulePreview();
+					toggleDependencies();
+				});
+			} else if (info.type === 'menu') {
+				input = document.createElement('select');
+				const options = info.options || {};
+				Object.keys(options)
+					.sort((a, b) => Number(a) - Number(b))
+					.forEach((key) => {
+						const opt = document.createElement('option');
+						opt.value = key;
+						opt.textContent = options[key];
+						input.appendChild(opt);
+					});
+				input.value = String(current[name]);
+				valueLabel.textContent = options[String(current[name])] || options[current[name]] || current[name];
+				input.addEventListener('change', () => {
+					current[name] = parseInt(input.value, 10);
+					valueLabel.textContent = options[input.value] || input.value;
+					schedulePreview();
+					toggleDependencies();
+				});
+				wrap.appendChild(input);
+			} else {
+				input = document.createElement('input');
+				input.type = 'range';
+				input.min = info.min;
+				input.max = info.max;
+				input.step = info.step || 1;
+				input.value = current[name];
+				valueLabel.textContent = input.value;
+				input.addEventListener('input', () => {
+					current[name] = parseInt(input.value, 10);
+					valueLabel.textContent = input.value;
+					schedulePreview();
+					toggleDependencies();
+				});
+				wrap.appendChild(input);
+			}
+
+			wrap.dataset.ctrl = name;
+			wrap.dataset.inputType = info.type;
+			return wrap;
+		}
+
+		function toggleDependencies() {
+			const autoExposure = Number(current.auto_exposure || 0);
+			const isoAuto = Number((current.iso_sensitivity_auto ?? 1));
+			const expoWrap = controlsEl.querySelector('[data-ctrl="exposure_time_absolute"]');
+			const isoWrap = controlsEl.querySelector('[data-ctrl="iso_sensitivity"]');
+			if (expoWrap) {
+				const input = expoWrap.querySelector('input,select');
+				if (input) input.disabled = autoExposure !== 1;
+				expoWrap.style.opacity = autoExposure === 1 ? '1' : '0.55';
+			}
+			if (isoWrap) {
+				const input = isoWrap.querySelector('input,select');
+				if (input) input.disabled = isoAuto !== 0;
+				isoWrap.style.opacity = isoAuto === 0 ? '1' : '0.55';
+			}
+		}
+
+		async function loadV4L2() {
+			setStatus('Loading parameters...');
+			const res = await fetch('/api/camera/v4l2');
+			if (!res.ok) {
+				let detail = 'load failed';
+				try {
+					const body = await res.json();
+					detail = body.detail || body.error || detail;
+				} catch (err) {}
+				throw new Error(detail + ' (HTTP ' + res.status + ')');
+			}
+			const data = await res.json();
+			meta = data.meta || {};
+			current = data.controls || {};
+			controlsEl.innerHTML = '';
+			order.forEach((name) => {
+				const node = renderControl(name);
+				if (node) controlsEl.appendChild(node);
+			});
+			toggleDependencies();
+			setStatus('Realtime preview active. Press Save Profile to persist values.');
+		}
+
+		async function previewApply() {
+			await fetch('/api/camera/v4l2/preview', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(current),
+			});
+		}
+
+		function schedulePreview() {
+			if (previewTimer) clearTimeout(previewTimer);
+			previewTimer = setTimeout(async () => {
+				try {
+					await previewApply();
+					setStatus('Realtime preview updated.');
+				} catch (err) {
+					setStatus('Realtime apply failed.');
+				}
+			}, 180);
+		}
+
+		saveBtn.addEventListener('click', async () => {
+			saveBtn.disabled = true;
+			setStatus('Saving profile...');
+			try {
+				const res = await fetch('/api/camera/v4l2/save', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(current),
+				});
+				if (!res.ok) throw new Error('save failed');
+				setStatus("Profile saved. Values will be restored at script startup.");
+			} catch (err) {
+				setStatus('Profile save failed.');
+			} finally {
+				saveBtn.disabled = false;
+			}
+		});
+
+		reloadBtn.addEventListener('click', async () => {
+			try {
+				await loadV4L2();
+			} catch (err) {
+				setStatus('Parameter reload failed.');
+			}
+		});
+
+		resetDefaultsBtn.addEventListener('click', async () => {
+			resetDefaultsBtn.disabled = true;
+			setStatus('Reset ai default driver in corso...');
+			try {
+				const res = await fetch('/api/camera/v4l2/reset-defaults', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({}),
+				});
+				if (!res.ok) throw new Error('reset failed');
+				await loadV4L2();
+				setStatus('Driver defaults restored and saved.');
+			} catch (err) {
+				setStatus('Driver default reset failed.');
+			} finally {
+				resetDefaultsBtn.disabled = false;
+			}
+		});
+
+		document.getElementById('goBack').addEventListener('click', () => {
+			window.location.href = '/';
+		});
+
+		streamStart();
+		loadV4L2().catch((err) => setStatus('Initial load failed: ' + err.message));
+	</script>
+</body>
+</html>
