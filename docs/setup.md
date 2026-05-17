@@ -203,7 +203,6 @@ sudo apt autoremove --purge -y
 
 ```sh
 git clone https://github.com/wavelov3r/LaserAirCam.git laseraircam && cd laseraircam
-cd laseraircam
 ```
 
 configure the LaserAirCam App:
@@ -235,7 +234,7 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/home/dietpi/laseraircam
-ExecStart=/usr/bin/python3 laseraircam.py
+ExecStart=sudo /usr/bin/python3 laseraircam.py
 Restart=on-failure
 User=dietpi
 
